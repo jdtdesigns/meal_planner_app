@@ -1,13 +1,17 @@
 const user_router = require('express').Router()
-const client = require('../db/client')
+const User = require('../models/User')
 
 // Register user
 user_router.post('/auth/register', async (req, res) => {
   try {
     const data = req.body
     // Create a user in the database
-    await client.query('INSERT INTO users (username, password) VALUES ($1, $2)', [data.username, data.password])
+    await User.create(data)
+
+    // Store their information to the server, so we have an active record of this user's data
+    // This allows us to know when they return, if their data is still active, then they are LOGGED IN (AUTHENTICATED)
   } catch (err) {
+    console.log(err)
     // Redirect user back to the register page
     res.redirect('/register')
   }
