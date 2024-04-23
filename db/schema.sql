@@ -7,7 +7,7 @@ CREATE DATABASE meal_planner_db;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(250) NOT NULL,
+  username VARCHAR(250) NOT NULL UNIQUE,
   password VARCHAR(250) NOT NULL
 );
 
