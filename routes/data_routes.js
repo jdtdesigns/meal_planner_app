@@ -1,8 +1,8 @@
-const user_router = require('express').Router()
+const router = require('express').Router()
 const User = require('../models/User')
 
 // Register user
-user_router.post('/auth/register', async (req, res) => {
+router.post('/auth/register', async (req, res) => {
   try {
     const data = req.body
     // Create a user in the database
@@ -17,4 +17,4 @@ user_router.post('/auth/register', async (req, res) => {
   }
 })
 
-module.exports = user_router
+module.exports = router
